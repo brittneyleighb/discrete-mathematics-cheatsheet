@@ -1,12 +1,10 @@
 # Discrete Mathematics for Computer Science
 
 > *"Computer science is no more about computers than astronomy is about telescopes."* — Edsger Dijkstra
->
-> And discrete math? It's the language those telescopes are built from.
 
-A practical cheatsheet for programmers, sysadmins, security folks, game developers, and Computer Science (CS) students who want to know *why* discrete math keeps showing up in their code, their kernels, their crypto, and their Continuous Integration / Continuous Deployment (CI/CD) pipelines.
+A practical cheatsheet for programmers, sysadmins, game developers, and Computer Science (CS) students who want to know *why* discrete math keeps showing up in their code, their kernels, their crypto, and their Continuous Integration / Continuous Deployment (CI/CD) pipelines.
 
-> **How to use this honestly:** This is a map, not a hike. Reading it gives you the lay of the land and the proper names for things, but it won't make you strong at discrete math any more than reading a fitness book builds muscle. Skim it once to know what exists. Then go *do* problems, write proofs, and break things. The [friction points](#where-people-actually-get-stuck) and [practice](#practice-it-for-real) sections near the end exist because reading is the easy part.
+> **How to use this honestly:** This is a map, not a hike. Reading it gives you the lay of the land and the proper names for things, but it won't make you strong at discrete math any more than reading a fitness book builds muscle. Skim it once to know what exists, but *do* problems, write proofs, and break things. for this, refer to the [friction points](#where-people-actually-get-stuck) and [practice](#practice-it-for-real) sections.
 
 ---
 
@@ -40,13 +38,13 @@ A practical cheatsheet for programmers, sysadmins, security folks, game develope
 
 ## What Is Discrete Mathematics?
 
-Discrete math is the study of countable, separate, distinct objects. Things like integers, graphs, statements that are either true or false, and finite sets of stuff. No smooth curves. No infinitesimals. No limits sneaking up on infinity.
+Discrete math is the "grammar of computer science," covering topics like integers, graphs, statements that are either true or false, and finite sets.
 
-If continuous math is a river (flowing, smooth, every point connecting to the next), then discrete math is a staircase. Each step is its own thing, you can count them, and there's nothing between step 3 and step 4.
+If continuous math is a river (flowing, smooth, every point connecting to the next), then discrete math is a staircase. Each step is something you can count, and there's nothing between step 3 and step 4.
 
 > **Rosen's definition:** *"Discrete mathematics is the part of mathematics devoted to the study of discrete objects."* (Kenneth H. Rosen, *Discrete Mathematics and Its Applications*, 8th ed., McGraw-Hill, 2019)
 
-Computers are fundamentally discrete machines. They flip bits, not dials. They count clock cycles, not measure time as a continuum. That's why this branch of math is the native tongue of computing.
+Computers are fundamentally discrete machines, with bits as "on" or "off" at the root.
 
 ---
 
@@ -61,8 +59,6 @@ Computers are fundamentally discrete machines. They flip bits, not dials. They c
 | **Question it asks** | "How does it change?" | "How many? Is it possible? Is it true?" |
 | **Used for** | Physics, engineering, economics | CS, cryptography, networks, databases |
 | **Computer-friendly?** | Needs approximation (floats lie!) | Natural fit, computers ARE discrete |
-
-The key insight: a floating-point number in your code is technically a lie. It's a discrete approximation of a continuous concept. Discrete math doesn't lie. When it says `5`, it means `5`.
 
 ---
 
@@ -82,7 +78,7 @@ The key insight: a floating-point number in your code is technically a lie. It's
 | **Compilers and Language Design** | Formal languages, automata, type systems, optimization theory |
 | **Machine Learning (ML)** | Probability theory, combinatorial optimization, graph neural nets |
 
-If you've ever written `if/else`, used a `HashSet`, traversed a tree, or computed Big-O, congrats. You've already been doing discrete math. This cheatsheet just gives you the names.
+If you've ever written `if/else`, used a `HashSet`, traversed a tree, or computed Big-O, you've already been doing discrete math. 
 
 ---
 
@@ -90,9 +86,7 @@ If you've ever written `if/else`, used a `HashSet`, traversed a tree, or compute
 
 ### 1. Mathematical Logic: The Grammar of Reasoning
 
-> **Analogy:** Logic is the circuit diagram of thought. Just as electricity flows through AND/OR gates, your reasoning flows through propositions and connectives.
-
-**Propositional Logic** deals with statements that are either `true` or `false`. No maybes.
+**Propositional Logic** deals with statements that are either `true` or `false`.
 
 ```
 Common Connectives:
@@ -109,7 +103,7 @@ Common Connectives:
 
 #### Real-World CS Applications:
 
-- **Programming**: Every `if`, `while`, `&&`, `||`, and `!` is propositional logic. Short-circuit evaluation? That's a logical optimization your language is doing for you.
+- **Programming**: Every `if`, `while`, `&&`, `||`, and `!` is propositional logic. 
 - **Cybersecurity**: Formal verification tools like Temporal Logic of Actions Plus (TLA+), Coq, and Isabelle use predicate logic to mathematically prove code is bug-free. The National Aeronautics and Space Administration (NASA) uses this for spacecraft. Amazon uses TLA+ on Simple Storage Service (S3).
 - **Databases**: Structured Query Language (SQL) `WHERE` clauses are predicate logic. `WHERE age > 18 AND country = 'US'` is just `∀ rows: P(age, country)` in disguise.
 - **Game Dev**: AI decision rules. "If enemy health < 30% AND player is visible AND I have ammo, then attack" is propositional logic running inside every Non-Player Character (NPC).
@@ -195,8 +189,8 @@ Relations are more flexible. They're just sets of ordered pairs. Equivalence rel
 #### Real-World CS Applications:
 
 - **Programming**: Pure functions in functional programming are mathematical functions. Same input gives same output, no side effects.
-- **Databases**: This is huge. Foreign keys are relations between tables. Normalization (First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), Boyce-Codd Normal Form (BCNF)) is literally about identifying and removing problematic functional dependencies. When your Object-Relational Mapping (ORM) tool enforces a one-to-many or many-to-many relationship, that's relation algebra in production.
-- **Cybersecurity**: Hash functions aspire to be injective (collision resistance). Cryptographic hashes like Secure Hash Algorithm 256-bit (SHA-256) are *one-way* functions: easy forward, infeasible backward.
+- **Databases**: Foreign keys are relations between tables. Normalization (First Normal Form (1NF), Second Normal Form (2NF), Third Normal Form (3NF), Boyce-Codd Normal Form (BCNF)) is literally about identifying and removing problematic functional dependencies. When your Object-Relational Mapping (ORM) tool enforces a one-to-many or many-to-many relationship.
+- **Cybersecurity**: Hash functions aspire to be injective (collision resistance). Cryptographic hashes like Secure Hash Algorithm 256-bit (SHA-256) are *one-way* functions.
 - **Kernel**: The system call table is a function from syscall number to handler function pointer.
 - **Compilers**: Symbol tables are functions from identifiers to memory addresses or types.
 - **Game Dev**: Animation state mappings (a function from {idle, walking, jumping, falling} to actual animation clips). Input bindings (a function from key codes to game actions).
@@ -209,7 +203,7 @@ Relations are more flexible. They're just sets of ordered pairs. Equivalence rel
 
 ### 4. Proof Techniques: How We Know We're Right
 
-> **Analogy:** A proof is a legal argument before a logic court. The jury (your reader) starts skeptical and must be convinced step by step. Hand-waving gets you held in contempt.
+> **Analogy:** A proof is a legal argument before a logic court. The jury (your reader) starts skeptical and must be convinced step by step. 
 
 | Technique | When to use it | Analogy |
 |---|---|---|
@@ -222,7 +216,7 @@ Relations are more flexible. They're just sets of ordered pairs. Equivalence rel
 
 #### Why Programmers Care:
 
-- **Loop invariants** are induction. You prove a property holds before the loop, that each iteration preserves it, and conclude it holds after. That's induction in disguise.
+- **Loop invariants** are induction. You prove a property holds before the loop, that each iteration preserves it, and conclude it holds after. 
 - **Algorithm correctness proofs** use induction (e.g., proving merge sort works).
 - **Recursive functions** mirror inductive proofs: base case plus recursive case.
 
@@ -243,8 +237,6 @@ def find_max(arr):
 - **Compilers**: Optimizations must be proven semantics-preserving. If your compiler swaps `x * 2` for `x << 1`, someone proved those are equivalent for the language's integer semantics.
 - **Game Dev**: Engine developers prove invariants about physics simulations (energy conservation, no objects passing through walls under normal conditions).
 - **Distributed Systems**: Consensus algorithms like Paxos and Raft come with formal proofs of correctness.
-
-> **Mental trap:** Induction *feels* like cheating. "Wait, I'm assuming P(k) is true to prove P(k+1)? Isn't that circular?" No. You're proving the *implication* `P(k) → P(k+1)`, which is a conditional, not a free assumption. Combined with a verified base case, the dominoes really do fall. Beginners also routinely botch the base case (proving it for n=1 when they need n=0, or vice versa) and that one bad domino tanks the whole proof.
 
 *Rosen, Chapter 1.7–1.8 (Proofs) and Chapter 5 (Induction)*
 
@@ -301,24 +293,18 @@ Key Formulas:
 
 #### Real-World CS Applications:
 
-- **Machine Learning**: Naive Bayes classifiers, probabilistic models, Bayesian inference. All built on this.
+- **Machine Learning**: Naive Bayes classifiers, probabilistic models, Bayesian inference. 
 - **Cybersecurity**: Intrusion detection uses Bayesian filters. False positive and false negative rates are conditional probabilities.
 - **Algorithms**: Randomized algorithms like QuickSort's average case, Bloom filters, and skip lists all need probabilistic analysis.
 - **Game Dev**: This is where probability lives and breathes. Critical hit rates, loot drop tables, Random Number Generator (RNG) based damage rolls, weighted random encounters, procedural map generation. Modern games carefully tune drop probabilities to keep players engaged without feeling cheated. Some games even use "pity systems" that increase probability with each failed roll, since pure independent probability feels worse than humans expect.
 - **Networking**: Packet loss modeling, queueing theory, and load balancing.
 - **DevOps**: Service Level Objective (SLO) and Service Level Indicator (SLI) calculations. "99.9% uptime" is a probability statement.
 
-**Bloom Filter**: a probabilistic data structure that says "definitely not in the set" or "probably in the set." Used in Content Delivery Networks (CDNs), databases (Cassandra, HBase), and web browsers (Chrome's malicious Uniform Resource Locator (URL) check). It exists because discrete probability lets us trade certainty for massive space savings.
-
-> **Mental trap:** `P(A|B) ≠ P(B|A)`. This is the *prosecutor's fallacy* and it's caused actual wrongful convictions. P(test positive | sick) is very different from P(sick | test positive). Also: independent events and mutually exclusive events are *opposites*, not synonyms (mutually exclusive events are maximally dependent). And the gambler's fallacy ("red is due!") is what casinos count on for rent money.
-
 *Rosen, Chapter 7: Discrete Probability*
 
 ---
 
 ### 7. Number Theory and Modular Arithmetic
-
-> **Analogy:** Modular arithmetic is clock math. On a 12-hour clock, 10 + 5 = 3, not 15. The world wraps around. Computers do this all the time (integer overflow, anyone?).
 
 ```
 Key Concepts:
@@ -339,8 +325,8 @@ Key Concepts:
 #### Other CS Applications:
 
 - **Programming**: `arr[i % len(arr)]` for circular buffers. Hash table indexing. Pseudorandom number generators like Linear Congruential Generators (LCGs).
-- **Kernel/OS**: Memory alignment uses bitwise modulo (`addr & (align - 1)`). Page numbering.
-- **Game Dev**: Deterministic seeded RNGs make multiplayer games reproducible. Modular arithmetic helps with tile wrapping (think *Pac-Man* warping through the screen edge) and procedural world generation using seeded noise functions.
+- **Kernel/OS**: Memory alignment uses bitwise modulo (`addr & (align - 1)`). 
+- **Game Dev**: Deterministic seeded RNGs make multiplayer games reproducible. Modular arithmetic helps with tile wrapping (like *Pac-Man* warping through the screen edge) and procedural world generation using seeded noise functions.
 - **Networking**: Transmission Control Protocol (TCP) sequence numbers wrap around using modular arithmetic. Cyclic Redundancy Check (CRC) checksums use polynomial arithmetic over finite fields. Internet Protocol version 4 (IPv4) subnet masking is bitwise modular math.
 - **Systems**: CRC checksums and error-detecting codes.
 
@@ -441,8 +427,8 @@ Vocabulary:
 
 #### Real-World CS Applications:
 
-- **Networking/IT**: The internet IS a graph. Routing protocols solve graph problems for a living. Open Shortest Path First (OSPF) runs Dijkstra to find shortest paths between routers. Border Gateway Protocol (BGP) uses a path-vector approach to route between autonomous systems. When your packet finds its way from your laptop to a server in Tokyo, that's graph theory working in real time.
-- **DevOps**: Build systems (Make, Bazel, Gradle), CI/CD pipelines, and Kubernetes pod dependencies are all DAGs. Terraform's dependency resolution is topological sort.
+- **Networking/IT**: The internet IS a graph. Routing protocols solve graph problems for a living. Open Shortest Path First (OSPF) runs Dijkstra to find shortest paths between routers. Border Gateway Protocol (BGP) uses a path-vector approach to route between autonomous systems. 
+- **DevOps**: Build systems (Make, Bazel, Gradle), CI/CD pipelines, and Kubernetes pod dependencies are all DAGs.
 - **OS/Kernel**: Deadlock detection uses cycle detection in resource allocation graphs. Process trees and namespace hierarchies are graphs.
 - **Cybersecurity**: Attack graphs model intrusion paths. Social network analysis catches fraud rings.
 - **Databases**: Query planners optimize join orderings, which is a graph problem. The query optimizer in PostgreSQL or MySQL evaluates many possible join trees and picks the cheapest. Graph databases like Neo4j and Amazon Neptune make the graph the *primary* data structure.
@@ -462,16 +448,12 @@ Git's DAG in action:
              E───F────
 ```
 
-> **Mental trap:** Dijkstra silently breaks on negative edge weights. It doesn't crash, it just gives wrong answers. Use Bellman-Ford if any weight could be negative. Also: cycle detection in directed and undirected graphs uses different techniques (DFS with a "currently visiting" set vs. union-find), and reusing the wrong one is a classic interview-question stumble. Basics like BFS look easy. Algorithms like max-flow, min-cut, and matching get hard fast.
-
 *Rosen, Chapter 10: Graphs*
 *Also: Cormen et al., "Introduction to Algorithms" (CLRS), Part VI*
 
 ---
 
 ### 10. Trees: Graphs That Grew Up
-
-> **Analogy:** A tree is a family tree drawn upside down. One root at top, branches descending, no cycles (so no awkward family reunions).
 
 A tree is a connected acyclic graph. With `n` nodes, it has exactly `n-1` edges. Always.
 
@@ -507,7 +489,7 @@ Note: AVL stands for the authors Adelson-Velsky and Landis.
 
 ### 11. Recursion and Recurrence Relations
 
-> **Analogy:** Recursion is a hall of mirrors with an exit door. Each reflection contains the same scene but smaller, until you reach the door (base case) and walk out.
+> **Analogy:** Recursion is a hall of mirrors with an exit door.
 
 A recurrence relation defines a sequence by relating each term to previous ones:
 
@@ -541,8 +523,6 @@ For divide-and-conquer recurrences `T(n) = a·T(n/b) + f(n)`, the Master Theorem
 ---
 
 ### 12. Algorithm Complexity: The Economics of Code
-
-> **Analogy:** Big-O is fuel efficiency for algorithms. It doesn't tell you exactly how fast a car goes. It tells you how it scales when the road gets longer.
 
 ```
 The Hierarchy (slowest to fastest growth):
@@ -586,8 +566,6 @@ If `P = NP`, modern cryptography collapses. Most computer scientists bet `P ≠ 
 
 ### 13. Automata and Formal Languages
 
-> **Analogy:** A finite automaton is a vending machine with states. Insert coin and the state changes. Press button and the state changes. The machine "remembers" only where it is, not its full history.
-
 The Chomsky hierarchy gives us a ladder of language complexity, each step requiring a more powerful machine to recognize it:
 
 | Language Class | Machine That Recognizes It | Real Example |
@@ -605,7 +583,7 @@ The Chomsky hierarchy gives us a ladder of language complexity, each step requir
 - **Game Dev**: NPC behavior, animation state machines, and dialogue systems are all finite state machines or hierarchical state machines. Unity's Animator and Unreal's State Trees are visual Finite State Machine (FSM) editors.
 - **Compilers**: Lexical analysis (tokenizers) use DFAs. Parsers use pushdown automata.
 
-> **Mental trap:** Regex cannot count. Regular languages can't match balanced parentheses or nested HyperText Markup Language (HTML) tags, no matter how clever your pattern looks. (Perl Compatible Regular Expressions (PCRE) and similar "regex" engines technically extend beyond regular languages with recursive features, but classic regex can't do it.) If you've ever tried to parse HTML with a regex and watched it explode, you've hit this limit. This is also why programming language syntax needs a parser, not just a lexer.
+> **Mental trap:** Regex cannot count. Regular languages can't match balanced parentheses or nested HyperText Markup Language (HTML) tags, no matter how clever your pattern looks. (Perl Compatible Regular Expressions (PCRE) and similar "regex" engines technically extend beyond regular languages with recursive features, but classic regex can't do it.) If you've ever tried to parse HTML with a regex and watched it explode, you've hit this limit. This is also why programming language syntax needs a parser.
 
 *Sipser, "Introduction to the Theory of Computation"*
 
@@ -613,7 +591,7 @@ The Chomsky hierarchy gives us a ladder of language complexity, each step requir
 
 ## Building Blocks of Programming Languages and Compilers
 
-Here's the fun part: when someone creates a new programming language, they're using almost every concept above. Let's walk through what happens when you type `int sum = a + b;` and how discrete math turns those characters into something a CPU executes.
+Let's walk through what happens when you type `int sum = a + b;` and how discrete math turns those characters into something a CPU executes.
 
 ### Stage 1: Lexical Analysis (Tokenizing)
 
@@ -640,7 +618,7 @@ The famous "Dragon Book" (*Compilers: Principles, Techniques, and Tools* by Aho,
 
 ### Stage 3: Semantic Analysis (Does This Make Sense?)
 
-Now the compiler checks that the parsed code is actually meaningful. Are all variables declared? Do types match? Is `5 + "hello"` allowed?
+The compiler checks that the parsed code is actually meaningful. Are all variables declared? Do types match? Is `5 + "hello"` allowed?
 
 **Discrete math powering this stage:**
 - **Sets and functions** for symbol tables and scope analysis
@@ -698,7 +676,7 @@ Almost universal. Induction looks like a recipe (base case + inductive step), bu
 - **Bad base case.** Off-by-one errors here are silent killers. Always verify your base case actually applies to the smallest case you care about.
 - **Weak vs. strong induction confusion.** Strong induction lets you assume `P(1), P(2), ..., P(k)` all hold, not just `P(k)`. For problems involving "split into two pieces" recurrences (like tilings, sorting), you usually need strong induction.
 
-**Fix:** Write 10 induction proofs by hand on paper. Don't read them, write them. Sums of integers, sums of squares, divisibility claims, properties of recursive code. Boring? Yes. Necessary? Also yes.
+**Fix:** Write 10 induction proofs by hand on paper. Don't read them, write them. Sums of integers, sums of squares, divisibility claims, properties of recursive code. 
 
 ### "Recursion melts my brain"
 
@@ -710,7 +688,7 @@ What works:
 3. Use that assumed-correct result to build the answer for the current input.
 4. Convince yourself the recursion is making progress toward the base case.
 
-That's it. If you're tracing the call stack five levels deep in your head, you're doing it wrong. Recursion is induction in code, and induction works the same way: prove the base, prove the step, trust the structure.
+TRecursion is induction in code, and induction works the same way: prove the base, prove the step, trust the structure.
 
 ### "Big-O makes sense until I use it wrong"
 
@@ -725,31 +703,21 @@ Big-O is the most-cited and most-misused concept in CS. Common errors:
 
 It looks like arithmetic. It's not. Probability hides traps under intuitive-sounding language:
 
-- **Independence vs. mutual exclusivity** confuses everyone. Two events that can't both happen (mutually exclusive) are *maximally dependent*, not independent.
+- **Independence vs. mutual exclusivity** Two events that can't both happen (mutually exclusive) are *maximally dependent*, not independent.
 - **Conditional probability symmetry.** `P(A|B) ≠ P(B|A)`. Doctors get this wrong, lawyers get this wrong, smart people get this wrong. Bayes' theorem is the tool to flip them safely.
 - **The gambler's fallacy.** Past independent events don't influence future ones. Red coming up 10 times in a row at roulette doesn't make black "due."
 - **Base rate neglect.** A 99% accurate test for a 1-in-10,000 disease will produce way more false positives than true positives. Always factor in the base rate.
 
 ### "Graph theory: easy basics, brutal middle"
 
-BFS and DFS are intuitive. Then you hit:
+These can get tricky:
 
 - **Minimum spanning trees** with two competing algorithms (Kruskal, Prim) and the question of when to use which.
 - **Shortest path with constraints** (negative weights, negative cycles, all-pairs).
 - **Network flow** problems, where Ford-Fulkerson, Edmonds-Karp, and Dinic's algorithm each have their place.
 - **NP-hard graph problems** (TSP, graph coloring, max clique) where you can't just "be clever," you have to approximate or accept exponential time.
 
-The basics let you write graph traversals. The middle requires real theory. Don't skip it if you want to design systems, not just consume libraries.
-
-### "Automata feels abstract until I build one"
-
-A DFA on paper is dry. A DFA implemented in code, processing a real string, lighting up the state transitions, suddenly clicks. Build a tiny regex engine or a simple state machine for parsing dates. The abstraction becomes concrete fast.
-
 ---
-
-## Practice It For Real
-
-Discrete math is like lifting weights: reading about it doesn't build the muscle. Here's how to actually train.
 
 ### Daily-ish problem solving
 
@@ -757,9 +725,7 @@ Discrete math is like lifting weights: reading about it doesn't build the muscle
 - **LeetCode** ([leetcode.com](https://leetcode.com/)). Filter by "Math," "Bit Manipulation," "Graph," "Dynamic Programming." The easy and medium tracks are great for spaced repetition of core ideas.
 - **CSES Problem Set** ([cses.fi/problemset](https://cses.fi/problemset/)). Free, well-curated set covering most of competitive programming foundations.
 
-### Build instead of read
-
-Pick one. Each forces you to internalize a chunk of discrete math the hard way.
+### Things to build
 
 | Build this | Forces you to learn |
 |---|---|
@@ -775,14 +741,12 @@ Pick one. Each forces you to internalize a chunk of discrete math the hard way.
 
 ### Prove things
 
-Prove three things a week, even small ones:
-
 - Prove your loop's invariant on a function you wrote at work.
 - Prove the correctness of binary search.
 - Prove `n² + n` is always even using cases.
 - Prove that any tree with n nodes has n-1 edges (by induction).
 
-Hand-write them. Computers don't help here.
+Bonus points: Hand-write them.
 
 ### Break things
 
@@ -794,10 +758,6 @@ Take a function in your codebase and ask:
 - Could a hostile input force `O(n²)` behavior in a function you thought was `O(n)`?
 
 That last one is the basis of *algorithmic complexity attacks*, a real category of vulnerability. Hash table denial-of-service attacks work this way.
-
-### The fitness analogy, one more time
-
-You don't get strong by reading about deadlifts. You don't get fluent in discrete math by reading a cheatsheet. Use this doc as a vocabulary list and a map. Then go to the gym.
 
 ---
 
@@ -1072,11 +1032,9 @@ WHEN YOU SEE...                       REACH FOR...
 
 ---
 
-## Final Thoughts
+## Summary
 
-Discrete math isn't a hoop CS programs make you jump through to weed you out. It's the vocabulary you didn't know you needed to describe what your code actually does.
-
-The next time you:
+When you:
 - Write a recursive function, you're using induction
 - Hash a password, you're invoking number theory
 - Traverse a directory, you're walking a tree
@@ -1086,20 +1044,14 @@ The next time you:
 - Optimize a SQL query, you're doing relational algebra
 - Lock a database row, you're preventing a graph cycle
 
-You're doing discrete math. This cheatsheet just hands you the proper names, and proper names give you proper power.
-
-But proper names aren't proper *skill*. That part is on you. Go prove something. Go build something. Go break something.
-
 > *"In mathematics you don't understand things. You just get used to them."* — John von Neumann
-
-Get used to them. Then go build something.
 
 ---
 
 ## License
 
-MIT License. Share freely, learn fiercely.
+MIT License.
 
 ---
 
-*Last updated: 2026*
+*Last updated: May 12, 2026*
