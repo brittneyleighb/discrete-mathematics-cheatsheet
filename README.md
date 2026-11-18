@@ -14,6 +14,14 @@ Discrete mathematics gives computer science its language for describing choices,
 
 When a topic feels abstract, find the programming question underneath it: “What can happen?”, “How many cases are there?”, “What is connected?”, or “Can I prove this always works?”
 
+## Try it safely
+
+**Predict:** what should happen before you act.  
+**Try:** use a local, reversible example.  
+**Explain:** describe the result in your own words.
+
+Choose a familiar program rule, such as “a user can submit a form only when logged in and the required fields are present.” Write it as a Boolean expression, test it with a truth table, then explain one case the rule correctly rejects.
+
 ## Table of Contents
 
 1. [What Is Discrete Math?](#what-is-discrete-mathematics)
