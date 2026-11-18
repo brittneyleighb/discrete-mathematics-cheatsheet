@@ -8,6 +8,12 @@ A practical cheatsheet for programmers, sysadmins, game developers, and Computer
 
 ---
 
+## Start here: discrete math is the toolkit for structure
+
+Discrete mathematics gives computer science its language for describing choices, relationships, and guarantees. Use this map: **logic and proofs** → **sets, functions, and relations** → **counting and probability** → **graphs and trees** → **recursion, complexity, and automata**.
+
+When a topic feels abstract, find the programming question underneath it: “What can happen?”, “How many cases are there?”, “What is connected?”, or “Can I prove this always works?”
+
 ## Table of Contents
 
 1. [What Is Discrete Math?](#what-is-discrete-mathematics)
